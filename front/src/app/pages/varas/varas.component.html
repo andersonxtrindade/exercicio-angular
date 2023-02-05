@@ -6,32 +6,32 @@
 </div>
 
 <app-searchbox (onSearch)="busca($event)"></app-searchbox>
-<p-table [value]="pessoas">
+<p-table [value]="varas">
   <ng-template pTemplate="header">
     <tr>
       <th>#</th>
       <th>Nome</th>
-      <th>Perfil</th>
+      <th>Setor</th>
       <th></th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-p>
+  <ng-template pTemplate="body" let-s>
     <tr>
-      <td>{{ p.id }}</td>
-      <td>{{ p.nome }}</td>
-      <td>{{ p.perfil }}</td>
+      <td>{{s.id}}</td>
+      <td>{{s.nome}}</td>
+      <td>{{s.setor}}</td>
       <td styleClass="p-button-div" style="text-align: end; margin-right: 30px;">
-          <button pButton icon="pi pi-pencil" class="p-button-rounded p-mr-2" style="margin-right: 20px;" (click)="editarPessoa(p)"></button>
-          <button pButton icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="handleDeleteDialog(p)"></button>
+          <button pButton icon="pi pi-pencil" class="p-button-rounded p-mr-2" style="margin-right: 20px;" (click)="editarVara(s)"></button>
+          <button pButton icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="handleDeleteDialog(s)"></button>
       </td>
     </tr>
   </ng-template>
 </p-table>
 
-<p-dialog [closable]="false" header="Cadastro de Pessoas" [(visible)]="displayPessoa"  [style]="{ width: '40vw' }" styleClass="p-fluid">
-  <ng-template pTemplate="content">
 
-    <form [formGroup]="formPessoa" (ngSubmit)="onSubmit($event)">
+<p-dialog [closable]="false" header="Cadastro de Varas" [(visible)]="displayVara"  [style]="{ width: '40vw' }" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form [formGroup]="formVara" (ngSubmit)="onSubmit($event)">
       <input hidden type="text" pInputText id="id" [formControl]="id" required autofocus formControlName="id"/>
       <div>
         <h5>Nome</h5>
@@ -46,49 +46,34 @@
         </div>
       </div>
 
-      <div *ngIf="!displayEdit">
-        <h5>Senha</h5>
-        <p-password [feedback]="false" formControlName="senha"></p-password>
-      </div>
-      <div [hidden]="senha.valid || senha.untouched">  
-        <div [hidden]="!senha.hasError('minlength')" class="div-red">
-          Senha tem que ter no minimo 3 caracteres.
-        </div>
-        <div [hidden]="!senha.hasError('required')" class="div-red">
-          Senha é obrigatorio.
-        </div>
-      </div>
-
-
       <div>
-        <h5>Pessoa</h5>
-        <p-dropdown appendTo="body" [options]="perfisList" placeholder="Selecionar o tipo de perfil" [showClear]="true" formControlName="perfis_id">
+        <h5>Setor</h5>
+        <p-dropdown appendTo="body" [options]="setoresList" placeholder="Selecionar o tipo de setor" [showClear]="true" formControlName="setores_id">
         </p-dropdown>
       </div>
-      <div [hidden]="perfis_id.valid || perfis_id.untouched">  
-        <div [hidden]="!perfis_id.hasError('required')" class="div-red">
-          Pessoa é obrigatorio.
+      <div [hidden]="setores_id.valid || setores_id.untouched">  
+        <div [hidden]="!setores_id.hasError('required')" class="div-red">
+          Setor é obrigatorio.
         </div>
       </div>
 
       <div class="container-buttons">
         <button pButton pRipple type="button" label="Cancelar" style="margin-right: 15px;" class="p-button-text p-button-mod" (click)="hideDialog()"></button>
-        <input pButton type="submit" class="p-button-text p-button-mod" [disabled]="!formPessoa.valid" value="Salvar">
+        <input pButton type="submit" class="p-button-text p-button-mod" [disabled]="!formVara.valid" value="Salvar">
       </div>
     </form>
   </ng-template>
-
 </p-dialog>
 
 
 <p-dialog [closable]="false" header="Exclusão" [(visible)]="displayDelete" [style]="{ width: '30vw' }" styleClass="p-fluid">
   <div style="display: flex;  align-items: center;">
       <button pButton disabled icon="pi pi-exclamation-triangle" class="p-button-rounded p-alert-icon"></button>
-      <p style="margin-left: 20px;">Deseja mesmo deletar essa pessoa?</p>
+      <p style="margin-left: 20px;">Deseja mesmo deletar essa vara?</p>
   </div>
 
   <ng-template pTemplate="footer">
           <button pButton label="Não" icon="pi pi-times" class="p-button-text" (click)="hideDeleteDialog()"></button>
-          <button pButton label="Sim" icon="pi pi-check" class="p-button-text" (click)="deleteSelectedPessoa()"></button>
+          <button pButton label="Sim" icon="pi pi-check" class="p-button-text" (click)="deleteSelectedVara()"></button>
   </ng-template>
 </p-dialog>

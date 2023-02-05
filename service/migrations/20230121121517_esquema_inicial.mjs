@@ -11,7 +11,7 @@ export const up = async (knex) => {
         })
         .createTable("pessoas", tb => {
             tb.increments("id");
-            tb.string("nome").notNullable();
+            tb.string("nome").notNullable().unique();
             tb.string("senha").notNullable();
             tb.integer("perfis_id").notNullable()
                 .references("perfis.id").onDelete("cascade");
@@ -37,11 +37,11 @@ export const up = async (knex) => {
             tb.timestamps(true, true);
         })
         .createTable("lotacoes", tb => {
+            tb.increments("id");
             tb.integer("pessoas_id").notNullable()
                 .references("pessoas.id").onDelete("cascade");
             tb.integer("gabinetes_id").notNullable()
                 .references("gabinetes.id").onDelete("cascade");
-            tb.primary(["pessoas_id", "gabinetes_id"]);
             tb.timestamps(true, true);
         })
 

@@ -1,4 +1,7 @@
 export interface Pessoa {
   id?: number;
-  nome: string;
+  nome?: string;
+  senha?: string;
+  perfis_id?: string;
+  perfil?: string;
 }

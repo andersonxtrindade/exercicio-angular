@@ -1,1 +1,20 @@
-<p>login works!</p>
+<p-toast></p-toast>
+
+<div class="container">
+  <div class="form-group">
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit($event)">
+      <h2 class="title">Login</h2>
+      <hr>
+      <div>
+        <p class="label">Usuário</p>
+        <input type="text" class="form-input" pInputText id="nome" [formControl]="nome" formControlName="nome" required autofocus/>
+      </div>
+      <div>
+        <p class="label">Senha</p>
+        <input type="password" autocomplete="on" class="form-input" pInputText id="senha" [formControl]="senha" formControlName="senha" required autofocus/>
+      </div>
+      <input pButton type="submit" class="p-button-text p-mr-2 button-login" value="Salvar">
+      <!-- <button pButton label="Login" class="p-button-text p-mr-2 button-login" (click)="login(user)"></button> -->
+    </form>
+  </div>
+</div>

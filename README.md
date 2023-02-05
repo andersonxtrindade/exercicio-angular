@@ -91,3 +91,9 @@ informações específicas pertinentes ao estudo.
 
 - Ver documentação do [front](front/README.md)
 - Ver documentação do [service](service/README.md)
+
+### Observações de desenvolvimento
+- Para o versionamento de senhas foi usado o bcrypt para que a senha fique criptografada.
+- Foi implementado a autenticação jwt no projeto.
+- No happy path foi testado todas as APIS usadas no projeto.
+- No login é gerado o JWT que é necessário nas Authorization das apis do projeto.

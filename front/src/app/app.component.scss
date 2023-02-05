@@ -1,0 +1,49 @@
+.container {
+  margin: auto;
+  width: 1280px;
+}
+
+.navbar-component {
+  display: flex;    
+}
+
+.tab-border {
+  border-bottom: 3px solid #dee2e6;
+  height: 59px;
+  display: flex;
+}
+
+.p-tabmenu .p-tabmenu-nav {
+  border: 0px solid #dee2e6 !important;
+}
+
+.tab-border .container .p-element .p-tabmenu .p-tabmenu-nav-container .p-tabmenu-nav-content .p-tabmenu-nav {
+  border: 0px solid #dee2e6 !important;
+}
+
+.texto-user {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.p-alert-icon {
+  color: black;
+  background-color: white;
+  border: white;
+}
+
+.logo {
+  position: absolute;
+  line-height: 45px;
+  margin-left: 30px;
+  font-size: 1.2rem;
+  font-family: monospace;
+}
+
+.logo-collapse {
+  justify-content: flex-end;
+}
+
+.logo-complete {
+  justify-content: space-between;
+}
